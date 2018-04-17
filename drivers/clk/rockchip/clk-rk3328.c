@@ -880,6 +880,7 @@ static const char *const rk3328_critical_clocks[] __initconst = {
 	"aclk_gmac_niu",
 	"pclk_gmac_niu",
 	"pclk_phy_niu",
+"dclk_lcdc_src",
 };
 
 static void __init rk3328_clk_init(struct device_node *np)
