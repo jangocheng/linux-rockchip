@@ -7,8 +7,9 @@ Required properties:
  - reg : Address and length of the hdmi phy control register set
  - clocks : phandle + clock specifier for the phy clocks
  - clock-names : string, clock name, must contain "sysclk" for system
-	  control and register configuration and "refclk" for reference
-	  crystal oscillator clock input to PLL
+	  control and register configuration, "refoclk" for crystal-
+	  oscillator reference PLL clock input and "refpclk" for pclk-
+	  based refeference PLL clock input.
  - #clock-cells: should be 0.
  - clock-output-names : shall be the name for the output clock.
  - interrupts : phandle + interrupt specified for the hdmiphy interrupt
@@ -24,8 +25,8 @@ Example:
 		compatible = "rockchip,rk3228-hdmi-phy";
 		reg = <0x12030000 0x10000>;
 		#phy-cells = <0>;
-		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>;
-		clock-names = "sysclk", "refclk";
+		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>, <&cru DCLK_HDMIPHY>;
+		clock-names = "sysclk", "refoclk", "refpclk";
 		#clock-cells = <0>;
 		clock-output-names = "hdmi_phy";
 		status = "disabled";
