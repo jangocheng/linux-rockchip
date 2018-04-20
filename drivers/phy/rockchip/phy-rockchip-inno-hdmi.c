@@ -834,7 +834,8 @@ static int inno_hdmi_phy_clk_register(struct inno_hdmi_phy *inno)
 	const char *parent_name;
 	int ret;
 
-	refclk = devm_clk_get(dev, "refclk");
+	/* get the oscillator-based reference clock input */
+	refclk = devm_clk_get(dev, "refoclk");
 	if (IS_ERR(refclk)) {
 		dev_err(dev, "failed to get ref clock\n");
 		return PTR_ERR(refclk);
